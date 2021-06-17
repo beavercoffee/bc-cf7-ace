@@ -2,12 +2,12 @@
 /*
 Author: Beaver Coffee
 Author URI: https://beaver.coffee
-Description: Log In (and Sign Up) with Contact Form 7.
+Description: Add ACE to Contact Form 7 admin fields.
 Domain Path:
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Network: true
-Plugin Name: BC CF7 Login
+Plugin Name: BC CF7 ACE
 Plugin URI: https://github.com/beavercoffee/bc-cf7-ace
 Requires at least: 5.7
 Requires PHP: 5.6

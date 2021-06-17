@@ -1,4 +1,4 @@
-=== BC CF7 Login ===
+=== BC CF7 ACE ===
 Contributors: beavercoffee
 Donate link: https://beaver.coffee
 License: GPLv2 or later
@@ -9,12 +9,12 @@ Stable tag: 1.6.15
 Tags:
 Tested up to: 5.7.2
 
-BC CF7 Login
+BC CF7 ACE
 
 == Description ==
 
-Log In (and Sign Up) with Contact Form 7.
+Add ACE to Contact Form 7 admin fields.
 
 == Changelog ==
 
-[Changelog »](https://github.com/beavercoffee/bc-cf7-ace "BC CF7 Login")
+[Changelog »](https://github.com/beavercoffee/bc-cf7-ace "BC CF7 ACE")
