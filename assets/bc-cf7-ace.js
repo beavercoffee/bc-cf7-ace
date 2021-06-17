@@ -3,6 +3,33 @@ if('undefined' === typeof(bc_cf7_ace)){
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+        beforeunload: function(event){
+            var changed = false;
+            jQuery('#wpcf7-admin-form-element :input[type!="hidden"]').not('.ace_text-input').each(function(){
+                if(jQuery(this).is(':checkbox, :radio')){
+                    if(this.defaultChecked != jQuery(this).is(':checked')){
+                        changed = true;
+                    }
+                } else if(jQuery(this).is('select')){
+                    jQuery(this).find('option').each(function(){
+                        if(this.defaultSelected != jQuery(this).is(':selected')){
+                            changed = true;
+                        }
+                    });
+                } else {
+                    if(this.defaultValue != jQuery(this).val()){
+                        changed = true;
+                    }
+                }
+            });
+            if(changed){
+                event.returnValue = wpcf7.saveAlert;
+                return wpcf7.saveAlert;
+            }
+        },
+
+    	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         edit: function(id){
             if(jQuery('#' + id).length){
                 if(typeof bc_cf7_ace.editors[id] === 'undefined'){
@@ -45,15 +72,19 @@ if('undefined' === typeof(bc_cf7_ace)){
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         init: function(){
-            if(typeof ace != 'undefined'){
-                ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12');
-               	ace.require('ace/ext/language_tools');
-                bc_cf7_ace.edit('wpcf7-form');
-                bc_cf7_ace.mail();
-                bc_cf7_ace.mail_2();
-                jQuery('#wpcf7-mail-use-html').on('change', bc_cf7_ace.mail);
-                jQuery('#wpcf7-mail-2-use-html').on('change', bc_cf7_ace.mail_2);
-        	}
+            jQuery(function(){
+                if(typeof ace != 'undefined'){
+                    ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12');
+                   	ace.require('ace/ext/language_tools');
+                    bc_cf7_ace.edit('wpcf7-form');
+                    bc_cf7_ace.mail();
+                    bc_cf7_ace.mail_2();
+                    jQuery('#wpcf7-mail-use-html').on('change', bc_cf7_ace.mail);
+                    jQuery('#wpcf7-mail-2-use-html').on('change', bc_cf7_ace.mail_2);
+                    jQuery(window).off('beforeunload');
+                    jQuery(window).on('beforeunload', bc_cf7_ace.beforeunload);
+            	}
+            });
         },
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
