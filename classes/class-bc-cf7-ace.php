@@ -17,14 +17,17 @@ if(!class_exists('BC_CF7_ACE')){
     	//
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    	public static function get_instance($file = ''){
-            if(null === self::$instance){
-                if(@is_file($file)){
-                    self::$instance = new self($file);
-                } else {
-                    wp_die(__('File doesn&#8217;t exist?'));
-                }
+        public static function get_instance($file = ''){
+            if(null !== self::$instance){
+                return self::$instance;
             }
+            if('' === $file){
+                wp_die(__('File doesn&#8217;t exist?'));
+            }
+            if(!is_file($file)){
+                wp_die(sprintf(__('File &#8220;%s&#8221; doesn&#8217;t exist?'), $file));
+            }
+            self::$instance = new self($file);
             return self::$instance;
     	}
 
