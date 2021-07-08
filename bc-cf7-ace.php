@@ -2,7 +2,7 @@
 /*
 Author: Beaver Coffee
 Author URI: https://beaver.coffee
-Description: Add ACE to Contact Form 7 admin fields.
+Description: Add ACE to Contact Form 7 admin.
 Domain Path:
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,7 +12,7 @@ Plugin URI: https://github.com/beavercoffee/bc-cf7-ace
 Requires at least: 5.7
 Requires PHP: 5.6
 Text Domain: bc-cf7-ace
-Version: 1.6.20
+Version: 1.7.8
 */
 
 if(defined('ABSPATH')){

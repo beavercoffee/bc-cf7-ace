@@ -5,7 +5,7 @@ if('undefined' === typeof(bc_cf7_ace)){
 
         beforeunload: function(event){
             var changed = false;
-            jQuery('#wpcf7-admin-form-element :input[type!="hidden"]').not('.ace_text-input').each(function(){
+            jQuery('#wpcf7-admin-form-element :input[type!="hidden"]').not(':not([name])').each(function(){
                 if(jQuery(this).is(':checkbox, :radio')){
                     if(this.defaultChecked != jQuery(this).is(':checked')){
                         changed = true;
