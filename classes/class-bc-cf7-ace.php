@@ -47,7 +47,7 @@ if(!class_exists('BC_CF7_ACE')){
 
     	private function __construct($file = ''){
             $this->file = $file;
-            add_action('plugins_loaded', [$this, 'plugins_loaded']);
+            add_action('bc_cf7_loaded', [$this, 'bc_cf7_loaded']);
         }
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,15 +73,10 @@ if(!class_exists('BC_CF7_ACE')){
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        public function plugins_loaded(){
-            if(!defined('BC_FUNCTIONS')){
-        		return;
-        	}
-            if(!defined('WPCF7_VERSION')){
-        		return;
-        	}
+        public function bc_cf7_loaded(){
             add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
             bc_build_update_checker('https://github.com/beavercoffee/bc-cf7-ace', $this->file, 'bc-cf7-ace');
+            do_action('bc_cf7_ace_loaded');
         }
 
     	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
